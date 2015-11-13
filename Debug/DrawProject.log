@@ -1,0 +1,20 @@
+﻿빌드 시작: 2015-11-12 오전 12:11:17
+     1>2 노드의 "C:\Users\kim\documents\visual studio 2013\Projects\DrawProject\DrawProject.vcxproj" 프로젝트(Build 대상)입니다.
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kim\documents\visual studio 2013\Projects\DrawProject\Debug\DrawProject.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\kim\documents\visual studio 2013\Projects\DrawProject\Debug\DrawProject.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kim\documents\visual studio 2013\Projects\DrawProject\Debug\DrawProject.lib" /MACHINE:X86 Debug\DrawProject.res
+         Debug\ChildFrm.obj
+         Debug\DrawProject.obj
+         Debug\DrawProjectDoc.obj
+         Debug\DrawProjectView.obj
+         Debug\Figure.obj
+         Debug\FigureCommand.obj
+         Debug\MainFrm.obj
+         Debug\Rectangle.obj
+         Debug\ReSizeRect.obj
+         Debug\stdafx.obj
+         DrawProject.vcxproj -> C:\Users\kim\documents\visual studio 2013\Projects\DrawProject\Debug\DrawProject.exe
+     1>"C:\Users\kim\documents\visual studio 2013\Projects\DrawProject\DrawProject.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.37
