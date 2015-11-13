@@ -3,7 +3,7 @@
 
 IMPLEMENT_SERIAL(CRectangle, CFigure, 1)
 
-CRectangle::CRectangle(CPoint p1, CPoint p2) 
+CRectangle::CRectangle(CPoint p1, CPoint p2)
 {
 	SetGeometry(p1, p2);
 }
@@ -29,31 +29,23 @@ void CRectangle::ReSizeRectDraw(CDC* pDC)
 
 void CRectangle::ReSize(CPoint point)
 {
-	CClientDC dc(AfxGetApp()->m_pActiveWnd);
-	CString str;
-
-	if (point.x >= m_rect.left && point.y >= m_rect.top) {
-		m_rect.BottomRight() = point;
-		str.Format(L"1번 left %d top %d right %d bottom %d", m_rect.left, m_rect.top, m_rect.right, m_rect.bottom);
-		dc.TextOutW(100, 100, str);
-	}
-	else if (point.x >= m_rect.left && point.y < m_rect.top) {
+	if (point.x > m_rect.right)
 		m_rect.right = point.x;
-		m_rect.top = point.y;
-		str.Format(L"22번 left %d top %d right %d bottom %d", m_rect.left, m_rect.top, m_rect.right, m_rect.bottom);
-		dc.TextOutW(100, 100, str);
-	}
-	else if (point.x < m_rect.right && point.y >= m_rect.top) {
+	else if (point.x < m_rect.left)
 		m_rect.left = point.x;
+	else if (point.x - m_rect.left > m_rect.right - point.x)
+		m_rect.right = point.x;
+	else
+		m_rect.left = point.x;
+
+	if (point.y > m_rect.bottom)
 		m_rect.bottom = point.y;
-		str.Format(L"333번 left %d top %d right %d bottom %d", m_rect.left, m_rect.top, m_rect.right, m_rect.bottom);
-		dc.TextOutW(100, 100, str);
-	}
-	else if (point.x < m_rect.left && point.y < m_rect.top) {
-		m_rect.TopLeft() = point;
-		str.Format(L"4444번 left %d top %d right %d bottom %d", m_rect.left, m_rect.top, m_rect.right, m_rect.bottom);
-		dc.TextOutW(100, 100, str);
-	}
+	else if (point.y < m_rect.top)
+		m_rect.top = point.y;
+	else if (point.y - m_rect.top > m_rect.bottom - point.y)
+		m_rect.bottom = point.y;
+	else
+		m_rect.top = point.y;
 }
 
 void CRectangle::Move(CPoint pre, CPoint current)
@@ -61,7 +53,7 @@ void CRectangle::Move(CPoint pre, CPoint current)
 	int move_x = current.x - pre.x;
 	int move_y = current.y - pre.y;
 
-	m_rect.MoveToXY(m_rect.left + move_x, m_rect.top + move_y);
+	m_rect.OffsetRect(move_x, move_y);
 }
 
 void CRectangle::SetGeometry(CPoint p1, CPoint p2)
