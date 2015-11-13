@@ -12,6 +12,6 @@ public:
 	//CReSizeRect& operator=(const CReSizeRect& resize) { return *this = resize; }
 
 	void Draw(CDC* pDC);
-	void Move(CPoint pre, CPoint current);
+	void Move(CPoint& pre, CPoint& current);
+	void SetPosition(CPoint& center, int size);
 };
-

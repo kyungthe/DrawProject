@@ -15,21 +15,10 @@ public:
 	virtual void ReSizeRectDraw(CDC* pDC) = 0;
 	virtual BOOL PtInObject(CPoint point) = 0;
 	virtual CRect BoundRect() = 0;
-	virtual void SetGeometry(CPoint p1, CPoint p2) = 0;
+	virtual void SetGeometry(CPoint& p1, CPoint& p2) = 0;
 	virtual void ReSize(CPoint point) = 0;
-	virtual void Move(CPoint pre, CPoint current) = 0;
+	virtual void Move(CPoint& pre, CPoint& current) = 0;
 protected:
 	DECLARE_DYNAMIC(CFigure)
-
-	CReSizeRect leftTop;
-	CReSizeRect midTop;
-	CReSizeRect rightTop;
-
-	CReSizeRect leftMid;
-	CReSizeRect rightMid;
-
-	CReSizeRect leftBottom;
-	CReSizeRect midBottom;
-	CReSizeRect rightBottom;
 };
 

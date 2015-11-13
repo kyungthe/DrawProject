@@ -115,7 +115,7 @@ void CDrawProjectView::OnLButtonDown(UINT nFlags, CPoint point)
 		m_prePoint = point;
 	}
 	else {
-		m_isDrag = true;
+		m_isMake = true;
 		m_r = new CRectangle(point, point);
 	}
 
@@ -125,8 +125,8 @@ void CDrawProjectView::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CDrawProjectView::OnLButtonUp(UINT nFlags, CPoint point)
 {
-	if (m_isDrag) {
-		m_isDrag = false;
+	if (m_isMake) {
+		m_isMake = false;
 	}
 
 	if (m_isMove) m_isMove = false;
@@ -137,7 +137,7 @@ void CDrawProjectView::OnLButtonUp(UINT nFlags, CPoint point)
 
 void CDrawProjectView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	if (m_isDrag) {
+	if (m_isMake) {
 		m_r->ReSize(point);
 		Invalidate();
 	}
@@ -150,4 +150,25 @@ void CDrawProjectView::OnMouseMove(UINT nFlags, CPoint point)
 	}
 
 	CView::OnMouseMove(nFlags, point);
+}
+
+void CDrawProjectView::AddFigure(CFigure* figure)
+{
+	m_figures.Add(figure);
+}
+
+void CDrawProjectView::DeleteAllFigures() {
+	for (int i = 0; i < m_figures.GetSize(); ++i)
+		delete m_figures[i];
+	m_figures.RemoveAll();
+}
+
+void CDrawProjectView::OnInitialUpdate()
+{
+	CView::OnInitialUpdate();
+
+	m_r = NULL;
+	m_prePoint = m_curtPoint = CPoint(0, 0);
+	m_isMake = 0;
+	m_isMove = 0;
 }

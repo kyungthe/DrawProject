@@ -8,10 +8,20 @@
 class CDrawProjectView : public CView
 {
 private:
-	CFigure* m_r = NULL;
+	CTypedPtrArray<CObArray, CFigure*> m_figures;
+
+	CFigure* m_r;
 	CPoint m_prePoint, m_curtPoint;
-	bool m_isDrag = 0;
-	bool m_isMove = 0;
+	bool m_isMake;
+	bool m_isMove;
+
+// CTypedPtrArray 메소드
+public:
+	void   AddFigure(CFigure* figure);
+	int    GetFigureCount() { return m_figures.GetCount(); }
+	CFigure* GetFigure(int index) { return m_figures[index]; }
+	void   DeleteAllFigures();
+
 protected: // serialization에서만 만들어집니다.
 	CDrawProjectView();
 	DECLARE_DYNCREATE(CDrawProjectView)
@@ -49,6 +59,7 @@ public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	virtual void OnInitialUpdate();
 };
 
 #ifndef _DEBUG  // DrawProjectView.cpp의 디버그 버전
